@@ -31,6 +31,7 @@ class UserController extends AbstractController
         {
             $hashedPassword = $hasher->hashPassword($user,$user->getPassword());
             $user->setPassword($hashedPassword);
+            $user->setRoles(null);
             $manager->persist($user);
             $manager->flush();
             return $this->redirectToRoute('login');

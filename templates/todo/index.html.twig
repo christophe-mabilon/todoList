@@ -9,22 +9,20 @@
             <h1 class="text-center text-white my-3">{{'todolist' | trans }}</h1>
             <div class="d-flex p-0">
                 <a href="{{ path("todo_create") }}" class="btn btn-warning rounded m-2"><small>{{ 'ajouttodo' | trans }}</small></a>
-                <a href="{{ path("todo/",{sort:'createdAt',order:'ASC'}) }}" class="nav-link text-white m-2"><small>{{ 'plusrecent' | trans | capitalize }}</small></a>
-                <a href="{{ path("todo/",{sort:'createdAt',order:'DESC'}) }}" class="nav-link text-white m-2"><small>{{ 'moinsrecent' | trans | capitalize }}</small></a>
-                <a href="{{ path("todo/",{sort:'dueDate',order:'ASC'}) }}" class="nav-link text-white m-2"><small>{{ 'plusurgent' | trans | capitalize }}</small></a>
-                <a href="{{ path("todo/",{sort:'dueDate',order:'DESC'}) }}" class="nav-link text-white m-2"><small>{{ 'moinsurgent' | trans | capitalize }}</small></a>
+                <a href="{{ path("todo_order",{order:'recent'}) }}" class="nav-link text-white m-2"><small>{{ 'plusrecent' | trans | capitalize }}</small></a>
+                <a href="{{ path("todo_order",{order:'oldest'}) }}" class="nav-link text-white m-2"><small>{{ 'moinsrecent' | trans | capitalize }}</small></a>
+                <a href="{{ path("todo_order",{order:'urgent'}) }}" class="nav-link text-white m-2"><small>{{ 'plusurgent' | trans | capitalize }}</small></a>
+                <a href="{{ path("todo_order",{order:'leastUrgent'}) }}" class="nav-link text-white m-2"><small>{{ 'moinsurgent' | trans | capitalize }}</small></a>
             </div>
-            <div class="col-4 text-warning border border-primary border-bottom-0 bg-info text-light"><p
+            <div class="col-3 text-warning border border-primary border-bottom-0 bg-info text-light"><p
                         class="fs-4 my-2">{{ 'description' | trans }}</p></div>
-            <div class="col-2 text-warning border border-primary border-bottom-0 bg-info text-light"><p
+            <div class="col-3 text-warning border border-primary border-bottom-0 bg-info text-light"><p
                         class="fs-4 my-2">{{ 'creationDate' | trans }}</p></div>
-            <div class="col-2 text-warning border border-primary border-bottom-0 bg-info text-light">
+            <div class="col-3 text-warning border border-primary border-bottom-0 bg-info text-light">
                 <p class="fs-4 my-2">{{ 'datelimite' | trans }}</p>
             </div>
-            <div class="col-2 text-warning border border-primary bg-info text-light"><p
-                        class="fs-4 my-2">{{ 'Fait' | trans }} {{ 'todo' | trans }}</p>
-            </div>
-            <div class="col-2 text-warning border border-primary bg-info text-light"><p
+
+            <div class="col-3 text-warning border border-primary bg-info text-light"><p
                         class="fs-4 my-2">{{ 'supprimer' | trans }}</p>
             </div>
         </div>
@@ -34,24 +32,21 @@
                 {% set colorClass="bg-warning" %}
             {% endif %}
             <div class="row m-0 {{ colorClass }}">
-                <div class="col-4 border border-primary text-dark">
+                <div class="col-3 border border-primary text-dark">
                     <div class="row h-100 justify-content-center align-items-center px-2"><p>{{ todo.description }}</p>
                     </div>
                 </div>
-                <div class="col-2 border border-primary  text-dark">
+                <div class="col-3 border border-primary  text-dark">
                     <div class="row h-100 justify-content-center align-items-center px-2">
                         <p>{{ todo.createdAt |date("m/d/Y", "Europe/Paris") }}
                             a {{ todo.createdAt | date( "h:i" ) }}</p></div>
                 </div>
-                <div class="col-2 border border-primary text-dark">
+                <div class="col-3 border border-primary text-dark">
                     <div class="row h-100 justify-content-center align-items-center px-2">
                         <p>{{ todo.duedate |date("m/d/Y", "Europe/Paris") }} a {{ todo.createdAt | date( "h:i" ) }}</p>
                     </div>
                 </div>
-                <div class="col-2 border border-primary text-dark">
-
-                </div>
-                <div class="col-2 border border-primary text-dark ">
+                <div class="col-3 border border-primary text-dark ">
                     <div class="row h-100 justify-content-center align-items-center px-2">
                         <a href="{{ path("todo_delete",{id: todo.id}) }}"
                            class="btn btn-danger rounded border border-dark  p-1">{{ 'supprimer' | trans }}</a>
@@ -61,5 +56,8 @@
             </div>
 
         {% endfor %}
+        <div class="navigation my-2">
+            {{ knp_pagination_render(todos,'@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig') }}
+        </div>
     </div>
 {% endblock %}

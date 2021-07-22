@@ -53,6 +53,11 @@ class User implements UserInterface
      */
     private $todos;
 
+    /**
+     * @ORM\Column(type="json", nullable=true)
+     */
+    private $roles = [];
+
     public function __construct()
     {
         $this->todos = new ArrayCollection();
@@ -149,9 +154,12 @@ class User implements UserInterface
     {
         // TODO: Implement eraseCredentials() method.
     }
-    public function getRoles()
+    public function getRoles():array
     {
-        return ['ROLE_USER'];
+        $roles = $this->roles;
+        $roles[] = "ROLE_USER";
+        return array_unique($roles);
+
         // TODO: Implement getRoles() method.
     }
     public function getUserIdentifier(): string
@@ -162,5 +170,12 @@ class User implements UserInterface
     public function __call($name, $arguments)
     {
         // TODO: Implement @method string getUserIdentifier()
+    }
+
+    public function setRoles(?array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
     }
 }

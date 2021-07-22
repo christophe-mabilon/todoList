@@ -6,6 +6,7 @@ use App\Entity\Todo;
 use App\Form\TodoType;
 use App\Repository\TodoRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,29 +22,36 @@ class TodoController extends AbstractController
 {
     /**
      * @Route("/todo", name="todo")
-     * @Route("/todo/{sort}/{order}", name="todo/")
+     * @Route("/todos/{order}", name="todo_order")
      */
-    public function index(UserInterface $user,TodoRepository $todoRepo,$sort = null,$order = null): Response
+    public function index(UserInterface $user,TodoRepository $todoRepo,$order = null,PaginatorInterface $paginator,Request $req): Response
     {
-
+        if($order){
+            switch ($order){
+                case 'recent':
+                    $todos = $todoRepo->findByUserSortedByMostRecent($user);
+                    break;
+                case 'oldest':
+                    $todos =$todoRepo->findByUserSortedByLessRecent($user);
+                    break;
+                case 'urgent':
+                    $todos = $todoRepo->findByUserDueDateByMostRecent($user);
+                    break;
+                case 'leastUrgent':
+                    $todos =$todoRepo->findByUserDueDateByLessRecent($user);
+                    break;
+            }
+        }else{
             $todos = $user->getTodos();
+            }
 
-        if($sort === "createdAt" && $order === "DESC"){
-             $todos = $todoRepo->findByUserSortedByMostRecent($user);
-        }
-        if($sort === "createdAt" && $order === "ASC"){
-            $todos =$todoRepo->findByUserSortedByLessRecent($user);
-        }
-
-        if($sort === "dueDate" && $order === "DESC"){
-            $todos = $todoRepo->findByUserDueDateByMostRecent($user);
-        }
-        if($sort === "dueDate" && $order === "ASC"){
-            $todos =$todoRepo->findByUserDueDateByLessRecent($user);
-        }
-
+        $todos = $paginator->paginate(
+            $todos,
+        $req->query->getInt('page',1),
+        10);
         return $this->render('todo/index.html.twig', [
             'todos' => $todos,
+
         ]);
     }
 
@@ -71,7 +79,7 @@ class TodoController extends AbstractController
 
         /**
          *
-         * @Route("/todo/delete/{id}" ,name="todo_delete",priority="1")
+         * @Route("/todo/delete/{id}" ,name="todo_delete",requirements={"id":"\d+"})
          *
          */
         public function delete(Todo $todo,EntityManagerInterface $manager,UserInterface $user):Response
