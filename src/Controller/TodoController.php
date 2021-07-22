@@ -13,11 +13,15 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 
+
+/**
+ * @Route("/{_locale}")
+ */
 class TodoController extends AbstractController
 {
     /**
-     * @Route("/{_locale}/todo", name="todo")
-     * @Route("/{_locale}/todo/{sort}/{order}", name="todo/")
+     * @Route("/todo", name="todo")
+     * @Route("/todo/{sort}/{order}", name="todo/")
      */
     public function index(UserInterface $user,TodoRepository $todoRepo,$sort = null,$order = null): Response
     {
@@ -80,25 +84,6 @@ class TodoController extends AbstractController
         return $this->redirectToRoute('todo');
 
     }
-
-    /**
-     *
-     * @route("/todo/do/{id}",name="todo_do",priority="2")
-     */
-    public function todomake(Request $req,EntityManagerInterface $manager,Todo $todo,UserInterface $user):Response
-    {
-        $do = $todo->getDo();
-        if($user == $todo->GetUser()){
-            $do = !$do;
-        $todo->setDo($do);
-        $manager->persist($todo);
-        $manager->flush();
-        }
-        return $this->redirectToRoute('todo');
-    }
-
-
-
 
 
 }

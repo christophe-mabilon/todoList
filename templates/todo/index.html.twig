@@ -22,7 +22,7 @@
                 <p class="fs-4 my-2">{{ 'datelimite' | trans }}</p>
             </div>
             <div class="col-2 text-warning border border-primary bg-info text-light"><p
-                        class="fs-4 my-2">{{ 'do' | trans }} {{ 'todo' | trans }}</p>
+                        class="fs-4 my-2">{{ 'Fait' | trans }} {{ 'todo' | trans }}</p>
             </div>
             <div class="col-2 text-warning border border-primary bg-info text-light"><p
                         class="fs-4 my-2">{{ 'supprimer' | trans }}</p>
@@ -49,16 +49,7 @@
                     </div>
                 </div>
                 <div class="col-2 border border-primary text-dark">
-                    <div class="row h-100 justify-content-center align-items-center px-2">
-                        {% if todo.do %}
-                            <a href="{{ path("todo_do",{id: todo.id}) }}"
-                               class="btn btn-success rounded border border-dark py-1 px-5">{{ 'do' | trans }}</a>
-                        {% else %}
-                            <a href="{{ path("todo_do",{id: todo.id}) }}"
-                               class="btn btn-warning rounded border border-dark py-1 px-2">{{ 'todo' | trans }}</a>
 
-                        {% endif %}
-                    </div>
                 </div>
                 <div class="col-2 border border-primary text-dark ">
                     <div class="row h-100 justify-content-center align-items-center px-2">

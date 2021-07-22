@@ -30,20 +30,21 @@
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
                         {% if app.user %}
-                        <a class="nav-link active" href="{{ path("login") }}">home
+                        <a class="text-white nav-link active" href="{{ path("login") }}">home
                             <span class="visually-hidden">(current)</span>
                         </a>
 
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path('todo') }}">{{ 'mestodos' | trans }}</a>
+                        <a class="text-white nav-link" href="{{ path('todo') }}">{{ 'mestodos' | trans }}</a>
                     </li>
 
                     {% endif %}
                 </ul>
                 <div class="d-flex align-items-center my-auto">
+
                     {% if app.user %}
-                        <small class="my-auto pe-5">{{ 'bonjour' | trans}} {{ app.user.username}} {{ 'connecte' | trans }}</small>
+                        <small class="text-white my-auto pe-5">{{ 'bonjour' | trans}} {{ app.user.username}} {{ 'connecte' | trans }}</small>
                     {% endif %}
 
                     <div class="col-auto">
@@ -53,6 +54,8 @@
                             <a href="{{ path("login") }}" class="btn btn-success rounded me-2">{{ 'connexion' | trans }}</a>
                             <a href="{{ path("register") }}" class="btn btn-info rounded me-2">{{ 'inscription' | trans }}</a>
                         {% endif %}
+                        <a href="{{ path(app.request.get('_route'), app.request.get('_route_params') | merge({ _locale: 'fr' }))}}"><span class="badge rounded-pill bg-info me-3">Fr</span></a>
+                        <a href="{{ path(app.request.get('_route'), app.request.get('_route_params') | merge({ _locale: 'en' }))}}"><span class="badge rounded-pill bg-warning me-3">En</span></a>
                     </div>
                     <div>
 
