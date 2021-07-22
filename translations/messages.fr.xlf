@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="supprimer" resname="supprimer">
+        <source>supprimer</source>
+        <target>supprimer</target>
+      </trans-unit>
+
+      <trans-unit id="Fait" resname="Fait">
+        <source>Fait</source>
+        <target>Fait</target>
+      </trans-unit>
+
+      <trans-unit id="todo" resname="todo">
+       <source>A faire</source>
+       <target>A faire</target>
+       </trans-unit>
+
+       <trans-unit id="datelimite" resname="datelimite">
+       <source>Date Limite</source>
+       <target>Date Limite</target>
+       </trans-unit>
+
+       <trans-unit id="creationDate" resname="creationDate">
+              <source>Date de création</source>
+              <target>Date de création</target>
+              </trans-unit>
+
+       <trans-unit id="description" resname="description">
+              <source>Déscription</source>
+              <target>Déscription</target>
+              </trans-unit>
+
+       <trans-unit id="ajouttodo" resname="ajouttodo">
+              <source>Ajouter un todo</source>
+              <target>Ajouter un todo</target>
+              </trans-unit>
+
+       <trans-unit id="moinsurgent" resname="moinsurgent">
+              <source>Moins urgent</source>
+              <target>Moins urgent</target>
+              </trans-unit>
+
+       <trans-unit id="plusurgent" resname="plusurgent">
+                     <source>Plus urgent</source>
+                     <target>Plus urgent</target>
+                     </trans-unit>
+
+       <trans-unit id="moinsrecent" resname="moinsrecent">
+                     <source>Moins récent</source>
+                     <target>Moins récent</target>
+                     </trans-unit>
+
+              <trans-unit id="plusrecent" resname="plusrecent">
+                            <source>Plus récent</source>
+                            <target>Plus récent</target>
+                            </trans-unit>
+
+              <trans-unit id="todolist" resname="todolist">
+                            <source>Ma liste de todo</source>
+                            <target>Ma liste de todo</target>
+                            </trans-unit>
+
+
+              <trans-unit id="inscription" resname="inscription">
+                            <source>Inscription</source>
+                            <target>Inscription</target>
+                            </trans-unit>
+
+
+              <trans-unit id="connexion" resname="connexion">
+                            <source>Connexion</source>
+                            <target>Connexion</target>
+                            </trans-unit>
+
+
+              <trans-unit id="Deconnexion" resname="Deconnexion">
+                            <source>Déconnexion</source>
+                            <target>Déconnexion</target>
+                            </trans-unit>
+
+
+              <trans-unit id="bonjour" resname="bonjour">
+                            <source>Bonjour</source>
+                            <target>Bonjour</target>
+                            </trans-unit>
+
+
+              <trans-unit id="mestodos" resname="mestodos">
+                            <source>Mes todos</source>
+                            <target>Mes todos</target>
+                            </trans-unit>
+
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% form_theme formulaireTodo 'bootstrap_5_layout.html.twig' %}
+{% block title %}Ajouter un todo{% endblock %}
+
+{% block body %}
+    <div class="container text-white">
+        <h1 class="my-3 text-center text-info">Ajouter un todo</h1>
+        {{  form_start(formulaireTodo)  }}
+        {{ form_row(formulaireTodo.description, {'attr': {'placeholder': 'Description'}})  }}
+        {{ form_row(formulaireTodo.dueDate, {'attr': {'placeholder': 'Date limite'}})  }}
+        <button type="submit" class="btn btn-info rounded">Enregistrer ce todo</button>
+
+        {{  form_end(formulaireTodo)  }}
+    </div>
+
+
+{% endblock %}

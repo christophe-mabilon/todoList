@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="supprimer" resname="supprimer">
+              <source>Supprimer</source>
+              <target>Delete</target>
+            </trans-unit>
+
+            <trans-unit id="Fait" resname="Fait">
+              <source>Fait</source>
+              <target>Do</target>
+            </trans-unit>
+
+            <trans-unit id="todo" resname="todo">
+             <source>A faire</source>
+             <target>To do</target>
+             </trans-unit>
+
+             <trans-unit id="datelimite" resname="datelimite">
+             <source>Date Limite</source>
+             <target>Limit date</target>
+             </trans-unit>
+
+             <trans-unit id="creationDate" resname="creationDate">
+                    <source>Date de création</source>
+                    <target>creation date</target>
+                    </trans-unit>
+
+             <trans-unit id="description" resname="description">
+                    <source>Déscription</source>
+                    <target>Description</target>
+                    </trans-unit>
+
+             <trans-unit id="ajouttodo" resname="ajouttodo">
+                    <source>Ajouter un todo</source>
+                    <target>Add a todo</target>
+                    </trans-unit>
+
+             <trans-unit id="moinsurgent" resname="moinsurgent">
+                    <source>Moins urgent</source>
+                    <target>Less urgent</target>
+                    </trans-unit>
+
+             <trans-unit id="plusurgent" resname="plusurgent">
+                           <source>Plus urgent</source>
+                           <target>Most urgent</target>
+                           </trans-unit>
+
+             <trans-unit id="moinsrecent" resname="moinsrecent">
+                           <source>Moins récent</source>
+                           <target>Less récent</target>
+                           </trans-unit>
+
+             <trans-unit id="plusrecent" resname="plusrecent">
+                           <source>Plus récent</source>
+                           <target>Most recent</target>
+                           </trans-unit>
+
+             <trans-unit id="todolist" resname="todolist">
+                                         <source>Ma liste de todo</source>
+                                         <target>My todo list</target>
+                                         </trans-unit>
+
+             <trans-unit id="inscription" resname="inscription">
+                                         <source>Inscription</source>
+                                         <target>Subscribe</target>
+                                         </trans-unit>
+
+             <trans-unit id="connexion" resname="connexion">
+                                         <source>Connexion</source>
+                                         <target>Login</target>
+                                         </trans-unit>
+
+             <trans-unit id="Deconnexion" resname="Deconnexion">
+                                         <source>Déconnexion</source>
+                                         <target>Disconnect</target>
+                                         </trans-unit>
+
+             <trans-unit id="bonjour" resname="bonjour">
+                                         <source>Bonjour</source>
+                                         <target>Hello</target>
+                                         </trans-unit>
+
+             <trans-unit id="connecte" resname="connecte">
+                                         <source>tu est Connecté</source>
+                                         <target>you are Connected</target>
+                                         </trans-unit>
+
+              <trans-unit id="mestodos" resname="mestodos">
+                                         <source>My todos</source>
+                                         <target>My todos</target>
+                                         </trans-unit>
+
+
+
+    </body>
+  </file>
+</xliff>
