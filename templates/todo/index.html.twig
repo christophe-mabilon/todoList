@@ -23,7 +23,7 @@
             </div>
 
             <div class="col-3 text-warning border border-primary bg-info text-light"><p
-                        class="fs-4 my-2">{{ 'supprimer' | trans }}</p>
+                        class="fs-4 my-2">{{ 'supprimer' | trans | capitalize}}</p>
             </div>
         </div>
         {% for todo in todos %}
@@ -38,18 +38,18 @@
                 </div>
                 <div class="col-3 border border-primary  text-dark">
                     <div class="row h-100 justify-content-center align-items-center px-2">
-                        <p>{{ todo.createdAt |date("m/d/Y", "Europe/Paris") }}
-                            a {{ todo.createdAt | date( "h:i" ) }}</p></div>
+                        <p>{{ todo.createdAt |date("d M Y", "Europe/Paris") }}
+                            a {{ todo.createdAt | date( "h:i", "Europe/Paris" ) }}</p></div>
                 </div>
                 <div class="col-3 border border-primary text-dark">
                     <div class="row h-100 justify-content-center align-items-center px-2">
-                        <p>{{ todo.duedate |date("m/d/Y", "Europe/Paris") }} a {{ todo.createdAt | date( "h:i" ) }}</p>
+                        <p>{{ todo.duedate |date("d M Y", "Europe/Paris") }} a {{ todo.duedate | date( "h:i", "Europe/Paris" ) }}</p>
                     </div>
                 </div>
                 <div class="col-3 border border-primary text-dark ">
                     <div class="row h-100 justify-content-center align-items-center px-2">
                         <a href="{{ path("todo_delete",{id: todo.id}) }}"
-                           class="btn btn-danger rounded border border-dark  p-1">{{ 'supprimer' | trans }}</a>
+                           class="btn btn-danger rounded border border-dark  p-1">{{ 'supprimer' | trans | capitalize  }}</a>
                     </div>
                 </div>
 

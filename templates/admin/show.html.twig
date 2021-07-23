@@ -6,18 +6,19 @@
 
     <div class="container-fluid">
         <div class="row bg-info text-center text-white">
-            <div class="col-3 border-white border-end py-3"><h5>Utilisateur</h5></div>
+            <div class="col-3 border-white border-end py-3"><h5>{{ 'username' | trans | capitalize }}</h5></div>
             <div class="col-3 border-white border-end py-3"><h5>Email</h5></div>
-            <div class="col-3 border-white border-end py-3"><h5>Password Hased</h5></div>
-            <div class="col-3 border-white border-end py-3"><h5>Roles</h5></div>
+            <div class="col-4 border-white border-end py-3"><h5>Password Hased</h5></div>
+            <div class="col-2 border-white border-end py-3"><h5>Roles</h5></div>
         </div>
     </div>
     <div class="row text-center align-items-center mx-0">
         <div class="col-3 text-dark bg-light pe-1"><p>{{ user.username }}</p></div>
         <div class="col-3 text-dark bg-light pe-1 "><p>{{ user.email }}</p></div>
-        <div class="col-3 text-dark bg-light pe-1 "><p>{{ user.password }}</p></div>
-        <div class="col-3 text-dark bg-light">{% if user.roles[0] == null %}
-            <p>ROLE_USER</p>
+        <div class="col-4 text-dark bg-light pe-1 "><p><small>{{ user.password }}</small></p></div>
+        <div class="col-2 text-dark bg-light">
+            {% if user.roles[0] == 'ROLE_ADMIN' %}
+            <p>ROLE_ADMIN</p>
             {% else %}
             <p>{{ user.roles[0] }}</p>
             {% endif %}
@@ -26,8 +27,10 @@
         <div class="container-fluid bg-light text-center align-items-center">
 
             <div class="row text-white text-center">
-                <h1 class="text-center text-dark my-1">LISTE DE TODOS DE {{ user.username }}</h1>
+                <h1 class="text-center text-dark my-1">{{ 'todolistde' |trans |capitalize }} {{ user.username }}</h1>
                 <div class="d-flex p-0">
+                    <a href="{{ path("admin_index") }}" class="btn btn-info rounded m-2"><small>{{ 'retourAcceuil' | trans }}</small></a>
+
                     <a href="{{ path("todo_create") }}" class="btn btn-warning rounded m-2"><small>{{ 'ajouttodo' | trans }}</small></a>
                     <a href="{{ path("admin_todo_order",{sort:'createdAt',order:'ASC'}) }}" class="nav-link text-dark m-2"><small>{{ 'plusrecent' | trans | capitalize }}</small></a>
                     <a href="{{ path("admin_todo_order",{sort:'createdAt',order:'DESC'}) }}" class="nav-link text-dark m-2"><small>{{ 'moinsrecent' | trans | capitalize }}</small></a>
@@ -35,15 +38,15 @@
                     <a href="{{ path("admin_todo_order",{sort:'dueDate',order:'DESC'}) }}" class="nav-link text-dark m-2"><small>{{ 'moinsurgent' | trans | capitalize }}</small></a>
                 </div>
                 <div class="col-3 text-warning border border-primary border-bottom-0 bg-info text-light"><p
-                            class="fs-4 my-2">{{ 'description' | trans }}</p></div>
+                            class="fs-4 my-2">{{ 'description' | trans  | capitalize}}</p></div>
                 <div class="col-3 text-warning border border-primary border-bottom-0 bg-info text-light"><p
-                            class="fs-4 my-2">{{ 'creationDate' | trans }}</p></div>
-                <div class="col-3 text-warning border border-primary border-bottom-0 bg-info text-light">
-                    <p class="fs-4 my-2">{{ 'datelimite' | trans }}</p>
+                            class="fs-4 my-2">{{ 'creationDate' | trans  | capitalize}}</p></div>
+                <div class="col-4 text-warning border border-primary border-bottom-0 bg-info text-light">
+                    <p class="fs-4 my-2">{{ 'datelimite' | trans  | capitalize}}</p>
                 </div>
 
-                <div class="col-3 text-warning border border-primary bg-info text-light"><p
-                            class="fs-4 my-2">{{ 'supprimer' | trans }}</p>
+                <div class="col-2 text-warning border border-primary bg-info text-light"><p
+                            class="fs-4 my-2">{{ 'supprimer' | trans |capitalize }}</p>
                 </div>
             </div>
         </div>
@@ -54,7 +57,7 @@
         {% endif %}
         <div class="row m-0 {{ colorClass }}">
             <div class="col-3 border border-primary text-dark">
-                <div class="row h-100 justify-content-center align-items-center px-2"><p>{{ todo.description }}</p>
+                <div class="row h-100 justify-content-center align-items-center px-2"><p>{{ todo.description | capitalize}}</p>
                 </div>
             </div>
             <div class="col-3 border border-primary  text-dark">
@@ -62,16 +65,16 @@
                     <p>{{ todo.createdAt |date("m/d/Y", "Europe/Paris") }}
                         a {{ todo.createdAt | date( "h:i" ) }}</p></div>
             </div>
-            <div class="col-3 border border-primary text-dark">
+            <div class="col-4 border border-primary text-dark">
                 <div class="row h-100 justify-content-center align-items-center px-2">
                     <p>{{ todo.duedate |date("m/d/Y", "Europe/Paris") }} a {{ todo.createdAt | date( "h:i" ) }}</p>
                 </div>
             </div>
 
-            <div class="col-3 border border-primary text-dark ">
+            <div class="col-2 border border-primary text-dark ">
                 <div class="row h-100 justify-content-center align-items-center px-2">
                     <a href="{{ path("admin_todo_delete",{id: todo.id}) }}"
-                       class="btn btn-danger rounded border border-dark  p-1">{{ 'supprimer' | trans }}</a>
+                       class="btn btn-danger rounded border border-dark  p-1">{{ 'deleteTodo' | trans | capitalize }}</a>
                 </div>
             </div>
 

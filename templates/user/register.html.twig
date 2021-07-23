@@ -4,13 +4,13 @@
 
 {% block body %}
         <div class="container text-white">
-            <h1 class="my-3 text-center text-info">S'enregistrer</h1>
+            <h1 class="my-3 text-center text-info">{{ 'enregistrer' |trans | upper }}</h1>
                 {{  form_start(formulaireRegister)  }}
         {{ form_row(formulaireRegister.username, {'attr': {'placeholder': 'Votre Username'}})  }}
         {{ form_row(formulaireRegister.email, {'attr': {'placeholder': 'Votre email'}})  }}
         {{ form_row(formulaireRegister.password, {'attr': {'placeholder': 'Votre mot de passe'}})  }}
         {{ form_row(formulaireRegister.passwordConfirm, {'attr': {'placeholder': 'Confirmer votre mot de pase'}})  }}
-        <button type="submit" class="btn btn-info rounded">S'enregistrer</button>
+        <button type="submit" class="btn btn-info rounded">{{ 'enregistrer' |trans | capitalize }}</button>
 
         {{  form_end(formulaireRegister)  }}
         </div>

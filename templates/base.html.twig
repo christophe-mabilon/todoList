@@ -30,7 +30,7 @@
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
                         {% if app.user %}
-                        <a class="text-white nav-link active" href="{{ path("login") }}">home
+                        <a class="text-white nav-link active" href="{{ path("login") }}">{{ 'home' | trans }}
                             <span class="visually-hidden">(current)</span>
                         </a>
 
@@ -38,6 +38,13 @@
                     <li class="nav-item">
                         <a class="text-white nav-link" href="{{ path('todo') }}">{{ 'mestodos' | trans }}</a>
                     </li>
+                    {% endif %}
+                    {% if app.user %}
+                        {% if app.user.roles[0] == 'ROLE_ADMIN' %}
+                            <li class="nav-item">
+                        <a class="text-white nav-link" href="{{ path('admin_index') }}">Admin</a>
+                        </li>{% endif %}
+                    {% else %}
 
                     {% endif %}
                 </ul>
@@ -66,6 +73,7 @@
             </div>
         </div>
     </nav>
-        {% block body %}{% endblock %}
+        {% block body %}
+        {% endblock %}
     </body>
 </html>

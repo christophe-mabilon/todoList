@@ -4,8 +4,9 @@
 
 {% block body %}
 <div class="container-fluid">
+    <h1 class="text-white text-center py-2">ADMIN</h1>
     <div class="row bg-info text-center text-white">
-        <div class="col-3 border-white border-end py-3"><h5>Utilisateur</h5></div>
+        <div class="col-3 border-white border-end py-3"><h5>{{ 'username' | trans |capitalize }}</h5></div>
         <div class="col-3 border-white border-end py-3"><h5>Email</h5></div>
         <div class="col-3 border-white border-end py-3"></div>
         <div class="col-3 border-white border-end py-3"></div>
@@ -18,8 +19,8 @@
             <div class="row text-center align-items-center">
                 <div class="col-3 text-dark bg-light pe-1"><p>{{ user.username }}</p></div>
                 <div class="col-3 text-dark bg-light pe-1 "><p>{{ user.email }}</p></div>
-                <div class="col-3 text-dark bg-light pe-1 "><a href="{{ path('admin_user_show',{id: user.id}) }}" class="btn btn-info rounded p-2">Voir ce profil</a></div>
-                <div class="col-3 text-dark bg-light"><a href="{{ path('admin_user_delete',{id:user.id}) }}" class="btn btn-danger rounded p-2">Supprimer ce profil</a></div>
+                <div class="col-3 text-dark bg-light pe-1 "><a href="{{ path('admin_user_show',{id: user.id}) }}" class="btn btn-info rounded p-2">{{ 'profil' |trans |capitalize }}</a></div>
+                <div class="col-3 text-dark bg-light"><a href="{{ path('admin_user_delete',{id:user.id}) }}" class="btn btn-danger rounded p-2">{{ 'supprimerProfil' | trans |capitalize }}</a></div>
 
 
             </div>

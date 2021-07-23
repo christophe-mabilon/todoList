@@ -56,24 +56,25 @@ class AdminController extends AbstractController
     public function show(User $user,TodoRepository $todoRepo,$sort = null,$order = null,PaginatorInterface $paginator,Request $req):Response
     {
 
-        $todos = $user->getTodos();
+        if($order){
+            switch ($order){
+                case 'recent':
+                    $todos = $todoRepo->findByUserSortedByMostRecent($user);
+                    break;
+                case 'oldest':
+                    $todos =$todoRepo->findByUserSortedByLessRecent($user);
+                    break;
+                case 'urgent':
+                    $todos = $todoRepo->findByUserDueDateByMostRecent($user);
+                    break;
+                case 'leastUrgent':
+                    $todos =$todoRepo->findByUserDueDateByLessRecent($user);
+                    break;
+            }
+        }else{
+            $todos = $user->getTodos();
+        }
 
-        if($sort === "createdAt" && $order === "DESC"){
-            $todos = $todoRepo->findByUserSortedByMostRecent($user);
-        }
-        if($sort === "createdAt" && $order === "ASC"){
-            $todos =$todoRepo->findByUserSortedByLessRecent($user);
-        }
-
-        if($sort === "dueDate" && $order === "DESC"){
-            $todos = $todoRepo->findByUserDueDateByMostRecent($user);
-        }
-        if($sort === "dueDate" && $order === "ASC"){
-            $todos =$todoRepo->findByUserDueDateByLessRecent($user);
-        }
-        else{
-            $todos =$todoRepo->findByUserSortedByLessRecent($user);
-        }
 
 
         $todos = $paginator->paginate(
